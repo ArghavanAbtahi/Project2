@@ -16,27 +16,28 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 var defaultURL = "/airbnb";
 
 d3.json(defaultURL, function(response) {
+  
+  // set variable to hold all properties in response.data
+  var airbnbProperties = response.data;
 
-    // Create a new marker cluster group
-    var markers = L.markerClusterGroup();
+  // initialize marker cluster group
+  var airbnbMarkers = L.markerClusterGroup();
+
+  // loop through airbnbProperties array 
+  for (var i = 0; i < airbnbProperties.length; i++) {
+    
+    var airbnbProperty = airbnbProperties[i];
+    
+    // set location variable for latitude and longtude
+    var location = [airbnbProperty.latitude, airbnbProperty.longitude];
+
+    if (location) {
+      airbnbMarkers.addLayer(L.marker(location)
+        .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price + "<h3><h3>Rating: " + airbnbProperty.rating));
+    } 
+  }
+
+  // add marker cluster to the map
+  myMap.addLayer(airbnbMarkers);
   
-    // Loop through data
-    for (var i = 0; i < response.length; i++) {
-  
-      // Set the data location property to a variable
-      var location = response[i].longitude;
-  
-      // Check for location property
-      if (location) {
-        
-        // Add a new marker to the cluster group and bind a pop-up
-        markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-          .bindPopup(response[i].descriptor));
-      }
-  
-    }
-  
-    // Add our marker cluster layer to the map
-    myMap.addLayer(markers);
-  
-  });
+});
