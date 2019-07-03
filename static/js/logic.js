@@ -18,15 +18,15 @@ var defaultURL = "/airbnb";
 d3.json(defaultURL, function(response) {
   
   // set variable to hold all properties in response.data
-  // var airbnbProperties = response.data;
+  var airbnbProperties = response.data.air;
 
   // initialize marker cluster group
   var airbnbMarkers = L.markerClusterGroup();
 
   // loop through airbnbProperties array 
-  for (var i = 0; i < response.length; i++) {
+  for (var i = 0; i < airbnbProperties.length; i++) {
     
-    var airbnbProperty = response[i];
+    var airbnbProperty = airbnbProperties[i];
     
     // set location variable for latitude and longtude
     var location = [airbnbProperty.latitude, airbnbProperty.longitude];
