@@ -63,6 +63,7 @@ def test():
     }
     data.append(air)
     i+=1
+
   print("dictionary complete")
   print("preparing to jsonify dictionary")  
   return jsonify(data)
