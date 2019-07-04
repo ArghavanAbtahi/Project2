@@ -17,11 +17,12 @@ var defaultURL = "/airbnb";
 
 d3.json(defaultURL, function(response) {
 
-console.log("showing response");
-console.log(response);
-console.log("Response has " + response.length + " items.");
 // set variable to hold all properties in response.data
 var airbnbProperties = response.data;
+
+console.log("showing response");
+console.log(airbnbProperties);
+console.log("Response has " + airbnbProperties.length + " items.");
 
 // initialize marker cluster group
 var airbnbMarkers = [];
