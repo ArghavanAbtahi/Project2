@@ -13,7 +13,7 @@ accessToken: API_KEY
 }).addTo(myMap);
 
 // add url for json stored in app route /airbnb
-var defaultURL = "/airbnb";
+var defaultURL = "/airbnb_sqrft";
 
 d3.json(defaultURL, function(response) {
 
