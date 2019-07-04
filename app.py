@@ -47,8 +47,8 @@ def test():
   i = 0
   while i < len(df):
     air = {
-      'neighbourhood':list(df['neighbourhood'])[i],
-      'neighborhood_overview':list(df['neighborhood_overview'])[i],
+      # 'neighbourhood':list(df['neighbourhood'])[i],
+      # 'neighborhood_overview':list(df['neighborhood_overview'])[i],
       'latitude':list(df['latitude'])[i],
       'longitude':list(df['longitude'])[i],
       'property_type':list(df['property_type'])[i],
