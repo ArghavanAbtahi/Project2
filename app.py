@@ -45,7 +45,7 @@ def test():
   print("preparing to convert df with " + str(len(df)) + " elements to a dictionary")
   data = []
   i = 0
-  while i < 50:
+  while i < len(df):
     air = {
       # 'neighbourhood':list(df['neighbourhood'])[i],
       # 'neighborhood_overview':list(df['neighborhood_overview'])[i],
@@ -58,7 +58,7 @@ def test():
       'bedrooms':list(df['bedrooms'])[i],
       'beds':list(df['beds'])[i],
       'price':list(df['price'])[i],
-      'number_of_reviews':list(df['number_of_reviews'])[i],
+      'number_of_reviews':list(df['number_of_reviews'])[i]
       # 'rating':list(df['rating'])[i]
     }
     data.append(air)
