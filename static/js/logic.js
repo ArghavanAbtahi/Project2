@@ -47,9 +47,10 @@ for (var i = 0; i < response.length; i++) {
   }
 }
 
+var markerLayer = L.layerGroup(airbnbMarkers);
 console.log("checking for markers");
 console.log(airbnbMarkers);
 // add marker cluster to the map
-myMap.addLayer(airbnbMarkers);
+myMap.addLayer(markerLayer);
 
 });
