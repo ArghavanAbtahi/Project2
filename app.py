@@ -42,10 +42,10 @@ def test():
   df = pd.read_sql_query(stmt, db.session.bind)
   print("printing df: ")
   print(df)
-  print("preparing dictionary to jsonfiy")
+  print("preparing to convert df with " + str(len(df)) + " elements to a dictionary")
   data = []
   i = 0
-  while i < 100:
+  while i < len(df):
     air = {
       # 'neighbourhood':list(df['neighbourhood'])[i],
       # 'neighborhood_overview':list(df['neighborhood_overview'])[i],
@@ -63,6 +63,8 @@ def test():
     }
     data.append(air)
     i+=1
+    print("dictionary complete")
+  print("preparing to jsonify dictionary")  
   return jsonify(data)
 
 @app.route("/airbnb_sqrft")

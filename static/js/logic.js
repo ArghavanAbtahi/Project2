@@ -19,6 +19,7 @@ d3.json(defaultURL, function(response) {
 
 console.log("showing response");
 console.log(response);
+console.log("Response contains ${response.length} items.");
 // // set variable to hold all properties in response.data
 // var airbnbProperties = response.data;
 
