@@ -1,4 +1,4 @@
-function createMap(airbnbMarkers) {
+function createMap(airbnbListings) {
 
   // Create the tile layer that will be the background of our map
   var streetMap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
@@ -15,14 +15,14 @@ function createMap(airbnbMarkers) {
 
   // Create an overlayMaps object to hold the bikeStations layer
   var overlayMaps = {
-    "Airbnb Markers": airbnbMarkers
+    "Airbnb Markers": airbnbListings
   };
 
   // Create the map object with options
   var map = L.map("map", {
     center: [41.8781, -87.6298],
     zoom: 12,
-    layers: [streetMap, airbnbMarkers]
+    layers: [streetMap, airbnbListings]
   });
 
 
