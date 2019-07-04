@@ -23,7 +23,7 @@ console.log(response);
 // var airbnbProperties = response.data;
 
 // initialize marker cluster group
-var airbnbMarkers = L.markerClusterGroup();
+var airbnbMarkers = [];
 
 // loop through airbnbProperties array
 for (var i = 0; i < response.length; i++) {
@@ -35,12 +35,18 @@ for (var i = 0; i < response.length; i++) {
 
   console.log("Never underestimate a console.log()")
   console.log(location);
+  
   if (location) {
-    airbnbMarkers.addLayer(L.marker(location)
-      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price + "<h3><h3>Rating: " + airbnbProperty.rating));
+    
+    var airbnbMarker = L.marker(location)
+      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price + "<h3><h3>Rating: " + airbnbProperty.rating);
+    
+    airbnbMarkers.push(airbnbMarker);
   }
 }
 
+console.log("checking for markers");
+console.log(airbnbMarkers);
 // add marker cluster to the map
 myMap.addLayer(airbnbMarkers);
 
