@@ -45,7 +45,7 @@ def test():
   print("preparing dictionary to jsonfiy")
   data = []
   i = 0
-  while i < 100:
+  while i < 75:
     air = {
       'neighbourhood':list(df['neighbourhood'])[i],
       'neighborhood_overview':list(df['neighborhood_overview'])[i],
