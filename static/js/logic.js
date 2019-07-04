@@ -36,7 +36,7 @@ var defaultURL = "/airbnb";
 function createMarkers(response) {
   
   // set variable to hold all properties in response.data
-  var airbnbProperties = response.data.air;
+  var airbnbProperties = response.air;
 
   // initialize marker cluster group
   var airbnbMarkers = [];
