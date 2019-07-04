@@ -17,6 +17,7 @@ var defaultURL = "/airbnb";
 
 d3.json(defaultURL, function(response) {
 
+console.log(response);
 // // set variable to hold all properties in response.data
 // var airbnbProperties = response.data;
 
