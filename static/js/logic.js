@@ -21,15 +21,15 @@ console.log("showing response");
 console.log(response);
 console.log("Response has " + response.length + " items.");
 // set variable to hold all properties in response.data
-// var airbnbProperties = response.data;
+var airbnbProperties = response.data;
 
 // initialize marker cluster group
 var airbnbMarkers = [];
 
 // loop through airbnbProperties array
-for (var i = 0; i < response.length; i++) {
+for (var i = 0; i < airbnbProperties.length; i++) {
 
-  var airbnbProperty = response[i];
+  var airbnbProperty = airbnbProperties[i];
 
   // set location variable for latitude and longtude
   var location = [airbnbProperty.latitude, airbnbProperty.longitude];
