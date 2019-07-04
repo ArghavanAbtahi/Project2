@@ -33,6 +33,8 @@ for (var i = 0; i < response.length; i++) {
   // set location variable for latitude and longtude
   var location = [airbnbProperty.longitude, airbnbProperty.latitude];
 
+  console.log("Never underestimate a console.log()")
+  console.log(location);
   if (location) {
     airbnbMarkers.addLayer(L.marker(location)
       .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price + "<h3><h3>Rating: " + airbnbProperty.rating));
