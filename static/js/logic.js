@@ -31,7 +31,7 @@ for (var i = 0; i < response.length; i++) {
   var airbnbProperty = response[i];
 
   // set location variable for latitude and longtude
-  var location = [response.longitude, response.latitude];
+  var location = [airbnbProperty.longitude, airbnbProperty.latitude];
 
   if (location) {
     airbnbMarkers.addLayer(L.marker(location)
