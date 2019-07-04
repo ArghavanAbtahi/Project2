@@ -21,8 +21,7 @@ function createMap(airbnbListings) {
   // Create the map object with options
   var map = L.map("map", {
     center: [41.8781, -87.6298],
-    zoom: 12,
-    layers: [streetMap, airbnbListings]
+    zoom: 12
   });
 
 
