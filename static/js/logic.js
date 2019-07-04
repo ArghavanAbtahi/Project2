@@ -31,7 +31,7 @@ for (var i = 0; i < response.length; i++) {
   var airbnbProperty = response[i];
 
   // set location variable for latitude and longtude
-  var location = [airbnbProperty.longitude, airbnbProperty.latitude];
+  var location = [airbnbProperty.latitude, airbnbProperty.longitude];
 
   console.log("Never underestimate a console.log()")
   console.log(location);
