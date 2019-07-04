@@ -59,7 +59,7 @@ def test():
       'beds':list(df['beds'])[i],
       'price':list(df['price'])[i],
       'number_of_reviews':list(df['number_of_reviews'])[i],
-      'rating':list(df['rating'])[i]
+      # 'rating':list(df['rating'])[i]
     }
     data.append(air)
     i+=1

@@ -40,7 +40,7 @@ for (var i = 0; i < response.length; i++) {
   if (location) {
     
     var airbnbMarker = L.marker(location)
-      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price + "<h3><h3>Rating: " + airbnbProperty.rating);
+      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
     
     console.log("pushing:");
     console.log(airbnbMarker); 
