@@ -37,16 +37,14 @@ d3.json(defaultURL, function(error, response) {
     // set location variable for latitude and longtude
     var location = [airbnbProperty.latitude, airbnbProperty.longitude];
 
-    console.log("Never underestimate a console.log()")
-    console.log(location);
+    // console.log(location);
     
     if (location) {
       
       var airbnbMarker = L.marker(location)
         .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
       
-      console.log("pushing:");
-      console.log(airbnbMarker); 
+      console.log("Adding marker to marker cluster group");
       airbnbMarkers.addLayer(airbnbMarker);
     }
   }
