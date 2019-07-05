@@ -44,7 +44,7 @@ d3.json(defaultURL, function(error, response) {
       // .push(airbnbMarker)   
       console.log("Adding marker to marker cluster group");
       markers.addLayer(L.marker(location)
-      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price));
+      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Neighborhood: " + airbnbProperty.neighbourhood + "<h3><h3>Capacity: " + airbnbProperty.accommodates + "<h3><h3>Price: " + airbnbProperty.price));
     }
   }
 
