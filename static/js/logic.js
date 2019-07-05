@@ -26,10 +26,9 @@ d3.json(defaultURL, function(error, response) {
   var numProperties = Object.keys(response).length;
   console.log("*** Number of properties received: " + numProperties);
 
-  // initialize marker array
-  var airbnbMarkers = [];
-
-
+  // initialize marker array, marker cluster group
+  var airbnbMarkers = L.markerClusterGroup();
+  
   // loop through airbnbProperties array
   for (var i = 0; i < response.length; i++) {
 
@@ -48,8 +47,7 @@ d3.json(defaultURL, function(error, response) {
       
       console.log("pushing:");
       console.log(airbnbMarker); 
-      airbnbMarkers.push(airbnbMarker);
-
+      airbnbMarkers.addLayer(airbnbMarker);
     }
   }
 
