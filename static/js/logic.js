@@ -15,44 +15,48 @@ accessToken: API_KEY
 // add url for json stored in app route /airbnb
 var defaultURL = "/airbnb";
 
-d3.json(defaultURL, function(response) {
+d3.json(defaultURL, function(error, response) {
 
-// set variable to hold all properties in response.data
-// var airbnbProperties = response.data;
-
-console.log("showing response");
-console.log(response);
-console.log("Response has " + response.length + " items.");
-
-// initialize marker cluster group
-var airbnbMarkers = [];
-
-// loop through airbnbProperties array
-for (var i = 0; i < response.length; i++) {
-
-  var airbnbProperty = response[i];
-
-  // set location variable for latitude and longtude
-  var location = [airbnbProperty.latitude, airbnbProperty.longitude];
-
-  console.log("Never underestimate a console.log()")
-  console.log(location);
-  
-  if (location) {
-    
-    var airbnbMarker = L.marker(location)
-      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
-    
-    console.log("pushing:");
-    console.log(airbnbMarker); 
-    airbnbMarkers.push(airbnbMarker);
+  if (error) {
+    console.log("*** Error getting response from " + defaultURL);
   }
-}
 
-var markerLayer = L.layerGroup(airbnbMarkers);
-console.log("checking for markers");
-console.log(airbnbMarkers);
-// add marker cluster to the map
-myMap.addLayer(markerLayer);
+  console.log("*** Response received");
+  console.log(response);
+  var numProperties = Object.keys(response).length;
+  console.log("*** Number of properties received: " + numProperties);
+
+  // initialize marker array
+  var airbnbMarkers = [];
+
+
+  // loop through airbnbProperties array
+  for (var i = 0; i < response.length; i++) {
+
+    var airbnbProperty = response[i];
+
+    // set location variable for latitude and longtude
+    var location = [airbnbProperty.latitude, airbnbProperty.longitude];
+
+    console.log("Never underestimate a console.log()")
+    console.log(location);
+    
+    if (location) {
+      
+      var airbnbMarker = L.marker(location)
+        .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
+      
+      console.log("pushing:");
+      console.log(airbnbMarker); 
+      airbnbMarkers.push(airbnbMarker);
+
+    }
+  }
+
+  var markerLayer = L.layerGroup(airbnbMarkers);
+  console.log("checking for markers");
+  console.log(airbnbMarkers);
+  // add marker cluster to the map
+  myMap.addLayer(markerLayer);
 
 });

@@ -36,19 +36,26 @@ def index():
 
 @app.route("/airbnb")
 def test():
-  print("airbnb route reached")
+  print("*** Route: /airbnb")
   stmt = db.session.query(airbnb).statement
+  print("*** Executing query:")
   print(stmt)
   df = pd.read_sql_query(stmt, db.session.bind)
-  print("printing df: ")
+  print("*** Printing df: ")
   print(df)
-  print("preparing to convert df with " + str(len(df)) + " elements to a dictionary")
+  numElements = len(df)
+  print("*** Dataframe currently contains " + str(numElements) + " elements")
+  print("*** Preparing to drop rows with NaN values from dataframe")
+  df = df.dropna()
+  numElementsRemaining = len(df)
+  print("*** Elements remaining in df: " + str(numElementsRemaining))
+
+  print("*** Preparing to convert df with " + str(numElementsRemaining) + " elements to a dictionary")
   data = []
   i = 0
-  while i < 100:
+  while i < numElementsRemaining:
     air = {
-      # 'neighbourhood':list(df['neighbourhood'])[i],
-      # 'neighborhood_overview':list(df['neighborhood_overview'])[i],
+      'neighbourhood':list(df['neighbourhood'])[i],
       'latitude':list(df['latitude'])[i],
       'longitude':list(df['longitude'])[i],
       'property_type':list(df['property_type'])[i],
@@ -58,14 +65,16 @@ def test():
       'bedrooms':list(df['bedrooms'])[i],
       'beds':list(df['beds'])[i],
       'price':list(df['price'])[i],
-      'number_of_reviews':list(df['number_of_reviews'])[i]
-      # 'rating':list(df['rating'])[i]
+      'number_of_reviews':list(df['number_of_reviews'])[i],
+      'rating':list(df['rating'])[i]
     }
     data.append(air)
     i+=1
+    print("Property number: " + str(i))
 
-  print("dictionary complete")
-  print("preparing to jsonify dictionary")  
+  print("*** Array data contains " + str(len(data)) + " dictionaries")
+  print("*** Preparing to return data as json")
+  
   return jsonify(data)
 
 @app.route("/airbnb_sqrft")
