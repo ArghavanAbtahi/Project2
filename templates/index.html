@@ -49,27 +49,29 @@
           </ul>
         </div>
     </nav>
-    <div class="jumbotron">
+    <main role="main">
+        <div class="jumbotron">
+            <div class="container">
+              <h1 class="display-4">Chibnb: Airbnb in Chicago</h1>
+              <p class="lead">An interactive glance at Airbnb listings in Chicago, IL, featuring an interactive map of over 5000 properties and charts conveying insights gleaned from data on those properties, courtesy of public records made available by <a href="http://insideairbnb.com/index.html">Inside Airbnb</a></p>
+            </div>
+        </div>
+    
         <div class="container">
-          <h1 class="display-4">Chibnb: Airbnb in Chicago</h1>
-          <p class="lead">An interactive glance at Airbnb listings in Chicago, IL, featuring an interactive map of over 5000 properties and charts conveying insights gleaned from data on those properties, courtesy of public records made available by <a href="http://insideairbnb.com/index.html">Inside Airbnb</a></p>
+          <div class="row">
+            <!-- The div where we will inject our map -->
+            <div id="map" href="#map"></div>
+          </div>
+          <div class="row" id="charts" href="#charts">
+            <div class="col-md-6">
+              <div id="neighborhoods"></div>
+            </div>
+            <div class="col-md-6">
+              <div id="scatter"></div>
+            </div>
+          </div>
         </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <!-- The div where we will inject our map -->
-        <div id="map" href="#map"></div>
-      </div>
-      <div class="row" id="charts" href="#charts">
-        <div class="col-md-6">
-          <div id="neighborhoods"></div>
-        </div>
-        <div class="col-md-6">
-          <div id="scatter"></div>
-        </div>
-      </div>
-    </div>
+    </main>
     <script type="text/javascript" src="static/js/config.js"></script>
     <script type="text/javascript" src="static/js/logic.js"></script>
     
