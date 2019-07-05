@@ -41,13 +41,10 @@ d3.json(defaultURL, function(error, response) {
     // console.log(location);
     
     if (location) {
-      
-      var airbnbMarker = L.marker(location)
-        .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
-
       // .push(airbnbMarker)   
       console.log("Adding marker to marker cluster group");
-      markers.addLayer(airbnbMarker);
+      markers.addLayer(L.marker(location)
+      .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price));
     }
   }
 
