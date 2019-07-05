@@ -15,6 +15,29 @@ accessToken: API_KEY
 // add url for json stored in app route /airbnb
 var defaultURL = "/airbnb";
 
+// adding svg elements for scatter plot
+var scatterSVGWidth = 960;
+var scatterSVGHeight = 500;
+
+var scatterMargin = {
+  top: 20,
+  right: 40,
+  bottom: 60,
+  left: 100
+};
+
+var scatterWidth = scatterSVGWidth - scatterMargin.left - scatterMargin.right;
+var scatterHeight = scatterSVGHeight - scatterMargin.top - scatterMargin.bottom;
+
+// Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
+var scatterSVG = d3.select("#scatter")
+  .append("svg")
+  .attr("width", scatterSVGWidth)
+  .attr("height", scatterSVGHeight);
+
+var scatterGroup = scatterSVG.append("g")
+  .attr("transform", `translate(${scatterMargin.left}, ${scatterMargin.top})`);
+
 d3.json(defaultURL, function(error, response) {
 
   if (error) {
