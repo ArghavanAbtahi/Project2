@@ -27,7 +27,8 @@ d3.json(defaultURL, function(error, response) {
   console.log("*** Number of properties received: " + numProperties);
 
   // initialize marker array, marker cluster group
-  var airbnbMarkers = L.markerClusterGroup();
+  // var airbnbMarkers = [];
+  var markers = L.markerClusterGroup();
   
   // loop through airbnbProperties array
   for (var i = 0; i < response.length; i++) {
@@ -43,16 +44,17 @@ d3.json(defaultURL, function(error, response) {
       
       var airbnbMarker = L.marker(location)
         .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Capacity: " + airbnbProperty.accomodates + "<h3><h3>Price: " + airbnbProperty.price);
-      
+
+      // .push(airbnbMarker)   
       console.log("Adding marker to marker cluster group");
-      airbnbMarkers.addLayer(airbnbMarker);
+      markers.addLayer(airbnbMarker);
     }
   }
 
-  var markerLayer = L.layerGroup(airbnbMarkers);
+  // var markerLayer = L.layerGroup(markers);
   console.log("checking for markers");
-  console.log(airbnbMarkers);
+  console.log(markers);
   // add marker cluster to the map
-  myMap.addLayer(markerLayer);
+  myMap.addLayer(markers);
 
 });
