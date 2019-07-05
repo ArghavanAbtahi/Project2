@@ -53,7 +53,7 @@ def test():
   print("*** Preparing to convert df with " + str(numElementsRemaining) + " elements to a dictionary")
   data = []
   i = 0
-  while i < numElementsRemaining:
+  while i < 1000:
     air = {
       'neighbourhood':list(df['neighbourhood'])[i],
       'latitude':list(df['latitude'])[i],
