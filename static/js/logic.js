@@ -81,6 +81,8 @@ for (var i = 0; i < touristAttractions.length; i++) {
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
+var defaultURL = "/airbnb";
+
 d3.json(defaultURL, function(error, response) {
 
   if (error) {
