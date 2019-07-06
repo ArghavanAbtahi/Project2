@@ -42,6 +42,7 @@ d3.json(defaultURL, function(error, response) {
             airbnbProperty.rating = +airbnbProperty.rating;
         });
         console.log(response[0]);
+        console.log("*** Highest price received: " + d3.max(response, airbnbProperty => airbnbProperty.price));
     
         // Create scale functions
         var xScatterScale = d3.scaleLinear()
@@ -64,8 +65,8 @@ d3.json(defaultURL, function(error, response) {
         .data(response)
         .enter()
         .append("circle")
-        .attr("cx", airbnbProperty => xLinearScale(airbnbProperty.price))
-        .attr("cy", airbnbProperty => yLinearScale(airbnbProperty.accommodates))
+        .attr("cx", airbnbProperty => xScatterScale(airbnbProperty.price))
+        .attr("cy", airbnbProperty => yScatterScale(airbnbProperty.accommodates))
         .attr("r", "10")
         .attr("fill", "salmon")
         .attr("opacity", ".7");
