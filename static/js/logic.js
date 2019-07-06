@@ -4,14 +4,6 @@ var myMap = L.map("map", {
   zoom: 11,
 });
 
-// Adding tile layer to the map
-L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.streets",
-  accessToken: API_KEY
-}).addTo(myMap);
-
 var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
@@ -67,7 +59,6 @@ var baseMaps = {
   Streets: streets
 };
 
-
 // Loop through the attractions array and create one marker for each object
 for (var i = 0; i < touristAttractions.length; i++) {
   L.circle(touristAttractions[i].location, {
@@ -80,7 +71,6 @@ for (var i = 0; i < touristAttractions.length; i++) {
 
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-
 
 d3.json(defaultURL, function(error, response) {
 

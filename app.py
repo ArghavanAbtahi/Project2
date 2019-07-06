@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 
 print("*** Before opening database file")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chibnb.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///airbnb.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -53,7 +53,7 @@ def test():
   print("*** Preparing to convert df with " + str(numElementsRemaining) + " elements to a dictionary")
   data = []
   i = 0
-  while i < numElementsRemaining:
+  while i < 5220:
     air = {
       'neighbourhood':list(df['neighbourhood'])[i],
       'latitude':list(df['latitude'])[i],
