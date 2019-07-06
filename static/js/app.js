@@ -66,7 +66,7 @@ d3.json(defaultURL, function(error, response) {
     .append("circle")
     .attr("cx", i => xScatterScale(i.price))
     .attr("cy", i => yScatterScale(i.number_of_reviews))
-    .attr("r", "10")
+    .attr("r", "1")
     .attr("fill", "salmon")
     .attr("opacity", ".7");
 
