@@ -44,16 +44,16 @@ var scatter2SVG = d3.select("#scatter2")
   .attr("height", scatter2SVGHeight);
 
 scatterSVG.append("text")
-  .attr("x", (width / 2))             
-  .attr("y", 0 - (margin.top / 2))
+  .attr("x", (scatterSVGWidth / 2))             
+  .attr("y", 0 - (scatterMargin.top / 2))
   .attr("text-anchor", "middle")  
   .style("font-size", "16px") 
   .style("text-decoration", "bold")  
   .text("Price vs. Number of Reviews");
 
 scatter2SVG.append("text")
-  .attr("x", (width / 2))             
-  .attr("y", 0 - (margin.top / 2))
+  .attr("x", (scatter2SVGWidth / 2))             
+  .attr("y", 0 - (scatter2Margin.top / 2))
   .attr("text-anchor", "middle")  
   .style("font-size", "16px") 
   .style("text-decoration", "bold")  
