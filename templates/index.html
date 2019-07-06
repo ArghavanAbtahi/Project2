@@ -60,16 +60,21 @@
         </div>
     
         <div class="container">
-          <div class="row">
-            <h2>Airbnb listings in Chicago</h2>
-            <!-- The div where we will inject our map -->
-            <div id="map" href="#map"></div>
-          </div>
-          <div class="row" href="#charts">
-            <div id="scatter"></div>
-            <div id="scatter2"></div>
-          </div>
+            <div class="row">
+              <h2>Airbnb listings in Chicago</h2>
+              <!-- The div where we will inject our map -->
+              <div id="map" href="#map"></div>
+            </div>
+            <div class="row" id="charts" href="charts">
+              <h2 class="chart-head">Price vs. Number of Reviews</h2>
+              <div class="charts" id="scatter"></div>
+            </div>
+            <div class="row" class="charts">
+                <h2 class="chart-head">Price vs. Property Capacity</h2>
+                <div class="charts" id="scatter2"></div>
+            </div>
         </div>
+  
     </main>
     <script type="text/javascript" src="static/js/config.js"></script>
     <script type="text/javascript" src="static/js/logic.js"></script>

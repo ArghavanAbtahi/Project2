@@ -14,15 +14,21 @@ html {
   height: 600px;
   width: 100%;
   position: relative;
+  margin-bottom: 5%;
 }
+.charts {
+  margin-top: 5%;
+}
+
 
 #scatter {
   max-width: 1200px;
-  margin: 5% 0 0 5%;
 }
-
 
 #scatter2 {
   max-width: 1200px;
-  margin: 5% 0 0 5%;
+}
+
+.chart-head {
+  text-align: center;
 }
