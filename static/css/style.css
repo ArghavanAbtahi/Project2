@@ -14,9 +14,10 @@ html {
   height: 600px;
   width: 100%;
   position: relative;
+  margin-bottom: 5%;
 }
 .charts {
-  margin: 5% 0 0 5%;
+  margin-top: 5%;
 }
 
 
