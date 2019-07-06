@@ -1,7 +1,7 @@
 var defaultURL = "/airbnb";
 
 // adding svg elements for scatter plot
-var scatterSVGWidth = 1180;
+var scatterSVGWidth = 1000;
 var scatterSVGHeight = 500;
 
 var scatterMargin = {
