@@ -64,8 +64,8 @@ d3.json(defaultURL, function(error, response) {
         .data(response)
         .enter()
         .append("circle")
-        .attr("cx", airbnbProperty => xScatterScale(airbnbProperty.price))
-        .attr("cy", airbnbProperty => yScatterScale(airbnbProperty.accommodates))
+        .attr("cx", airbnbProperty => xLinearScale(airbnbProperty.price))
+        .attr("cy", airbnbProperty => yLinearScale(airbnbProperty.accommodates))
         .attr("r", "10")
         .attr("fill", "salmon")
         .attr("opacity", ".7");
