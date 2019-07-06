@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 
 print("*** Before opening database file")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///airbnb.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///chibnb.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
