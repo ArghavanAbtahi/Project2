@@ -43,6 +43,22 @@ var scatter2SVG = d3.select("#scatter2")
   .attr("width", scatter2SVGWidth)
   .attr("height", scatter2SVGHeight);
 
+scatterSVG.append("text")
+  .attr("x", (width / 2))             
+  .attr("y", 0 - (margin.top / 2))
+  .attr("text-anchor", "middle")  
+  .style("font-size", "16px") 
+  .style("text-decoration", "bold")  
+  .text("Price vs. Number of Reviews");
+
+scatter2SVG.append("text")
+  .attr("x", (width / 2))             
+  .attr("y", 0 - (margin.top / 2))
+  .attr("text-anchor", "middle")  
+  .style("font-size", "16px") 
+  .style("text-decoration", "bold")  
+  .text("Price vs. Property Capacity");
+
 var scatter2Group = scatter2SVG.append("g")
   .attr("transform", `translate(${scatter2Margin.left}, ${scatter2Margin.top})`);
 
@@ -122,12 +138,13 @@ d3.json(defaultURL, function(error, response) {
     .attr("x", 10 - (scatterHeight / 2))
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("Price");
+    .text("Number of reviews");
 
     scatterGroup.append("text")
     .attr("transform", `translate(${scatterWidth / 2}, ${scatterHeight + scatterMargin.top + 30})`)
     .attr("class", "axisText")
-    .text("Number of reviews");
+    .text("Price");
+
 
     // *** SCATTER 2
     // Create scale functions
@@ -154,7 +171,7 @@ d3.json(defaultURL, function(error, response) {
     .attr("cx", i => xscatter2Scale(i.price))
     .attr("cy", i => yscatter2Scale(i.accommodates))
     .attr("r", "5")
-    .attr("fill", "salmon")
+    .attr("fill", "lightskyblue")
     .attr("opacity", ".7");
 
     // Initialize tooltip
@@ -183,11 +200,11 @@ d3.json(defaultURL, function(error, response) {
     .attr("x", 10 - (scatter2Height / 2))
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("Price");
+    .text("Property capacity");
 
     scatter2Group.append("text")
     .attr("transform", `translate(${scatter2Width / 2}, ${scatter2Height + scatter2Margin.top + 30})`)
     .attr("class", "axisText")
-    .text("Property capacity");
+    .text("Price");
 
 });
