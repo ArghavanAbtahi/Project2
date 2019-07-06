@@ -48,7 +48,7 @@ d3.json(defaultURL, function(error, response) {
     .range([0, scatterWidth]);
 
     var yScatterScale = d3.scaleLinear()
-        .domain([0, d3.max(response, i => i.accommodates)])
+        .domain([0, d3.max(response, i => i.rating)])
         .range([scatterHeight, 0]);
 
     // Create axis functions
@@ -64,7 +64,7 @@ d3.json(defaultURL, function(error, response) {
     .enter()
     .append("circle")
     .attr("cx", i => xScatterScale(i.price))
-    .attr("cy", i => yScatterScale(i.accommodates))
+    .attr("cy", i => yScatterScale(i.rating))
     .attr("r", "10")
     .attr("fill", "salmon")
     .attr("opacity", ".7");
@@ -74,7 +74,7 @@ d3.json(defaultURL, function(error, response) {
     .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(i) {
-        return (`${i.property_type}<br>Price: ${i.price}<br> Capacity: ${i.accommodates}`);
+        return (`${i.property_type}<br>Price: ${i.price}<br> Rating: ${i.rating}`);
     });
 
     // Call tooltip
@@ -100,6 +100,6 @@ d3.json(defaultURL, function(error, response) {
     scatterGroup.append("text")
     .attr("transform", `translate(${scatterWidth / 2}, ${scatterHeight + scatterMargin.top + 30})`)
     .attr("class", "axisText")
-    .text("Rental price");
-    
+    .text("Average rating");
+
 });
