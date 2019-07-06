@@ -16,7 +16,7 @@ html {
   position: relative;
 }
 
-#charts {
+#scatter {
   max-width: 1200px;
-  margin: 35px 0 0 35px;
+  margin: 5% 0 0 5%;
 }
