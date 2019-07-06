@@ -25,3 +25,7 @@ html {
   max-width: 1200px;
   margin: 5% 0 0 5%;
 }
+
+.chart-head {
+  text-align: center;
+}
