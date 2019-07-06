@@ -38,6 +38,7 @@ d3.json(defaultURL, function(error, response) {
         i.accommodates = +i.accommodates;
         i.price = +i.price;
         i.rating = +i.rating;
+        i.number_of_reviews = +i.number_of_reviews;
     });
     console.log(response[0]);
     console.log("*** Highest price received: " + d3.max(response, i => i.price));
@@ -48,7 +49,7 @@ d3.json(defaultURL, function(error, response) {
     .range([0, scatterWidth]);
 
     var yScatterScale = d3.scaleLinear()
-        .domain([0, d3.max(response, i => i.rating)])
+        .domain([0, d3.max(response, i => i.number_of_reviews)])
         .range([scatterHeight, 0]);
 
     // Create axis functions
@@ -64,7 +65,7 @@ d3.json(defaultURL, function(error, response) {
     .enter()
     .append("circle")
     .attr("cx", i => xScatterScale(i.price))
-    .attr("cy", i => yScatterScale(i.rating))
+    .attr("cy", i => yScatterScale(i.number_of_reviews))
     .attr("r", "10")
     .attr("fill", "salmon")
     .attr("opacity", ".7");
@@ -74,7 +75,7 @@ d3.json(defaultURL, function(error, response) {
     .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(i) {
-        return (`${i.property_type}<br>Price: ${i.price}<br> Rating: ${i.rating}`);
+        return (`${i.property_type}<br>Price: ${i.price}<br> Number of reviews: ${i.number_of_reviews}`);
     });
 
     // Call tooltip
@@ -100,6 +101,6 @@ d3.json(defaultURL, function(error, response) {
     scatterGroup.append("text")
     .attr("transform", `translate(${scatterWidth / 2}, ${scatterHeight + scatterMargin.top + 30})`)
     .attr("class", "axisText")
-    .text("Average rating");
+    .text("Number of reviews");
 
 });
