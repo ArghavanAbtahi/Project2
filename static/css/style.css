@@ -15,15 +15,17 @@ html {
   width: 100%;
   position: relative;
 }
+#charts {
+  margin: 5% 0 0 5%;
+}
+
 
 #scatter {
   max-width: 1200px;
-  margin: 5% 0 0 5%;
 }
 
 #scatter2 {
   max-width: 1200px;
-  margin: 5% 0 0 5%;
 }
 
 .chart-head {
