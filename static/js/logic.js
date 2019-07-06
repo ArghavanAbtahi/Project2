@@ -15,28 +15,28 @@ accessToken: API_KEY
 // add url for json stored in app route /airbnb
 var defaultURL = "/airbnb";
 
-// adding svg elements for scatter plot
-var scatterSVGWidth = 960;
-var scatterSVGHeight = 500;
+// // adding svg elements for scatter plot
+// var scatterSVGWidth = 960;
+// var scatterSVGHeight = 500;
 
-var scatterMargin = {
-  top: 20,
-  right: 40,
-  bottom: 60,
-  left: 100
-};
+// var scatterMargin = {
+//   top: 20,
+//   right: 40,
+//   bottom: 60,
+//   left: 100
+// };
 
-var scatterWidth = scatterSVGWidth - scatterMargin.left - scatterMargin.right;
-var scatterHeight = scatterSVGHeight - scatterMargin.top - scatterMargin.bottom;
+// var scatterWidth = scatterSVGWidth - scatterMargin.left - scatterMargin.right;
+// var scatterHeight = scatterSVGHeight - scatterMargin.top - scatterMargin.bottom;
 
-// Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var scatterSVG = d3.select("#scatter")
-  .append("svg")
-  .attr("width", scatterSVGWidth)
-  .attr("height", scatterSVGHeight);
+// // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
+// var scatterSVG = d3.select("#scatter")
+//   .append("svg")
+//   .attr("width", scatterSVGWidth)
+//   .attr("height", scatterSVGHeight);
 
-var scatterGroup = scatterSVG.append("g")
-  .attr("transform", `translate(${scatterMargin.left}, ${scatterMargin.top})`);
+// var scatterGroup = scatterSVG.append("g")
+//   .attr("transform", `translate(${scatterMargin.left}, ${scatterMargin.top})`);
 
 d3.json(defaultURL, function(error, response) {
 
@@ -52,34 +52,11 @@ d3.json(defaultURL, function(error, response) {
   // initialize marker array, marker cluster group
   // var airbnbMarkers = [];
   var markers = L.markerClusterGroup();
-
-  var airbnbProperty = response[i];
-
-  response.forEach(function(airbnbProperty) {
-    airbnbProperty.accommodates = +airbnbProperty.accommodates;
-    airbnbProperty.price = +airbnbProperty.price;
-    airbnbProperty.rating = +airbnbProperty.rating;
-  });
-  console.log(response[0]);
-
-  // Create scale functions
-  var xScatterScale = d3.scaleLinear()
-  .domain([0, d3.max(response, airbnbProperty => airbnbProperty.price)])
-  .range([0, scatterWidth]);
-
-  var yScatterScale = d3.scaleLinear()
-    .domain([0, d3.max(response, airbnbProperty => airbnbProperty.accommodates)])
-    .range([scatterHeight, 0]);
-
-  // Create axis functions
-  var scatterBottomAxis = d3.axisBottom(xScatterScale);
-  var scatterLeftAxis = d3.axisLeft(yScatterScale);
-
-  scatterGroup.append("g").attr("transform", `translate(0, ${scatterHeight})`).call(scatterBottomAxis);
-  scatterGroup.append("g").call(scatterLeftAxis);
   
   // loop through airbnbProperties array
   for (var i = 0; i < response.length; i++) {
+
+    var airbnbProperty = response[i];
 
     // set location variable for latitude and longtude
     var location = [airbnbProperty.latitude, airbnbProperty.longitude];
