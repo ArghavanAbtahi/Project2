@@ -69,6 +69,29 @@ d3.json(defaultURL, function(error, response) {
       markers.addLayer(L.marker(location)
       .bindPopup("<h3>" + airbnbProperty.property_type + "<h3><h3>Neighborhood: " + airbnbProperty.neighbourhood + "<h3><h3>Capacity: " + airbnbProperty.accommodates + "<h3><h3>Price: " + airbnbProperty.price));
     }
+
+    response.forEach(function(airbnbProperty) {
+        airbnbProperty.accommodates = +airbnbProperty.accommodates;
+        airbnbProperty.price = +airbnbProperty.price;
+        airbnbProperty.rating = +airbnbProperty.rating;
+    });
+    console.log(response[0]);
+
+    // Create scale functions
+    var xScatterScale = d3.scaleLinear()
+     .domain([0, d3.max(response, airbnbProperty => airbnbProperty.price)])
+     .range([0, scatterWidth]);
+    
+    var yScatterScale = d3.scaleLinear()
+      .domain([0, d3.max(response, airbnbProperty => airbnbProperty.accommodates)])
+      .range([scatterHeight, 0]);
+    
+    // Create axis functions
+    var scatterBottomAxis = d3.axisBottom(xScatterScale);
+    var scatterLeftAxis = d3.axisLeft(yScatterScale);
+
+    scatterGroup.append("g").attr("transform", `translate(0, ${scatterHeight})`).call(scatterBottomAxis);
+    scatterGroup.append("g").call(scatterLeftAxis);
   }
 
   // var markerLayer = L.layerGroup(markers);
