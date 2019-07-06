@@ -43,9 +43,24 @@ var scatter2SVG = d3.select("#scatter2")
   .attr("width", scatter2SVGWidth)
   .attr("height", scatter2SVGHeight);
 
+scatterSVG.append("text")
+  .attr("x", (scatterSVGWidth / 2))             
+  .attr("y", 0 - (scatterMargin.top / 2))
+  .attr("text-anchor", "middle")  
+  .style("font-size", "16px") 
+  .style("text-decoration", "bold")  
+  .text("Price vs. Number of Reviews");
+
+scatter2SVG.append("text")
+  .attr("x", (scatter2SVGWidth / 2))             
+  .attr("y", 0 - (scatter2Margin.top / 2))
+  .attr("text-anchor", "middle")  
+  .style("font-size", "16px") 
+  .style("text-decoration", "bold")  
+  .text("Price vs. Property Capacity");
+
 var scatter2Group = scatter2SVG.append("g")
   .attr("transform", `translate(${scatter2Margin.left}, ${scatter2Margin.top})`);
-
 
 // JSON FUNCTION
 // Calling json to create charts
@@ -123,12 +138,74 @@ d3.json(defaultURL, function(error, response) {
     .attr("x", 10 - (scatterHeight / 2))
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("Price");
+    .text("Number of reviews");
 
     scatterGroup.append("text")
     .attr("transform", `translate(${scatterWidth / 2}, ${scatterHeight + scatterMargin.top + 30})`)
     .attr("class", "axisText")
-    .text("Number of reviews");
+    .text("Price");
+
+
+    // *** SCATTER 2
+    // Create scale functions
+    var xscatter2Scale = d3.scaleLinear()
+    .domain([0, d3.max(response, i => i.price)])
+    .range([0, scatter2Width]);
+
+    var yscatter2Scale = d3.scaleLinear()
+        .domain([0, d3.max(response, i => i.accommodates)])
+        .range([scatter2Height, 0]);
+
+    // Create axis functions
+    var scatter2BottomAxis = d3.axisBottom(xscatter2Scale);
+    var scatter2LeftAxis = d3.axisLeft(yscatter2Scale);
+
+    scatter2Group.append("g").attr("transform", `translate(0, ${scatter2Height})`).call(scatter2BottomAxis);
+    scatter2Group.append("g").call(scatter2LeftAxis);
+
+        // Create circles
+    var circles = scatter2Group.selectAll("circle")
+    .data(response)
+    .enter()
+    .append("circle")
+    .attr("cx", i => xscatter2Scale(i.price))
+    .attr("cy", i => yscatter2Scale(i.accommodates))
+    .attr("r", "5")
+    .attr("fill", "lightskyblue")
+    .attr("opacity", ".7");
+
+    // Initialize tooltip
+    var scatter2Tooltip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([80, -60])
+    .html(function(i) {
+        return (`${i.property_type}<br>Price: ${i.price}<br> Capacity: ${i.accommodates}`);
+    });
+
+    // Call tooltip
+    scatter2Group.call(scatter2Tooltip);
+
+    // Display and hide the tooltip on hover
+    circles.on("mouseover", function(response) {
+        scatter2Tooltip.show(response, this);
+    })
+        // hover
+        .on("mouseout", function(response, index) {
+        scatter2Tooltip.hide(response);
+        });
+
+    scatter2Group.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 10 - scatter2Margin.left + 40)
+    .attr("x", 10 - (scatter2Height / 2))
+    .attr("dy", "1em")
+    .attr("class", "axisText")
+    .text("Property capacity");
+
+    scatter2Group.append("text")
+    .attr("transform", `translate(${scatter2Width / 2}, ${scatter2Height + scatter2Margin.top + 30})`)
+    .attr("class", "axisText")
+    .text("Price");
 
     // *** SCATTER 2
     // Create scale functions
@@ -184,11 +261,11 @@ d3.json(defaultURL, function(error, response) {
     .attr("x", 10 - (scatter2Height / 2))
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("Price");
+    .text("Property capacity");
 
     scatter2Group.append("text")
     .attr("transform", `translate(${scatter2Width / 2}, ${scatter2Height + scatter2Margin.top + 30})`)
     .attr("class", "axisText")
-    .text("Property capacity");
+    .text("Price");
 
 });
