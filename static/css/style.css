@@ -16,7 +16,7 @@ html {
   position: relative;
 }
 
-.charts {
+#charts {
   max-width: 1200px;
   margin: 35px 0 0 35px;
 }
